@@ -32,7 +32,7 @@ configure_key_values(){
   if [ "$SET_GIT_ENV" = true ]; then
     echo "$key=${!key}"  >> $GITHUB_ENV
   fi
-  echo "$key=${!key}"  >> $GITHUB_OUTPUT
+  echo "$key=${!key}"
 }
 
 if [ "$INPUT_KEYS" == "all" ]; then

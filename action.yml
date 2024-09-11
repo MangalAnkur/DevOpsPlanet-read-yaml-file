@@ -33,5 +33,8 @@ runs:
   steps:
     - run: |
         chmod +x ./code-files/script.sh
-        ./code-files/script.sh  ${{ inputs.yaml-file }} ${{ inputs.key-transformation }} ${{ inputs.set-env-vars }} ${{ inputs.keys }}
+        data=$(./code-files/script.sh  ${{ inputs.yaml-file }} ${{ inputs.key-transformation }} ${{ inputs.set-env-vars }} ${{ inputs.keys }})
+        for var in $data; do
+          echo "$var" >> $GITHUB_OUTPUT
+        done
       shell: bash
