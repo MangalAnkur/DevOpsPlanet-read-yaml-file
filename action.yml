@@ -27,9 +27,7 @@ inputs:
 outputs:
   Instance_type_1:
     description: 'Key values data Read form YAML file'
-    value: "dummy_value"
-  Instance_type_2:
-    description: 'Key values data Read form YAML file'
+    value: ${{ toJson(steps.read_yaml_file.outputs) }}
 
 runs:
   using: "composite"
@@ -39,8 +37,7 @@ runs:
         chmod +x ./code-files/script.sh
         data=$(./code-files/script.sh  ${{ inputs.yaml-file }} ${{ inputs.key-transformation }} ${{ inputs.set-env-vars }} ${{ inputs.keys }})
         echo "Instance_type_1=t2.medium" >> $GITHUB_OUTPUT
-        echo "Instance_type_2=t2.large" >> $GITHUB_OUTPUT
-        # for var in $data; do
-        #   echo "$var" >> $GITHUB_OUTPUT
-        # done
+        for var in $data; do
+          echo "$var" >> $GITHUB_OUTPUT
+        done
       shell: bash
