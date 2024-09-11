@@ -2,7 +2,7 @@ name: 'Read Yaml File'
 author: 'Ankur Mangal'
 description: 'script that reads values from a YAML file and sets them as environment variables'
 branding:
-  icon: package
+  icon: code
   color: purple
 inputs:
   yaml-file:
