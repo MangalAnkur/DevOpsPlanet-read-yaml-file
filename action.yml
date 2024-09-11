@@ -24,7 +24,7 @@ inputs:
     required: false
     default: true
 
-outputs:
+output:
   data:
     description: 'Key values data Read form YAML file'
 
