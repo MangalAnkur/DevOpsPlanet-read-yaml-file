@@ -27,6 +27,10 @@ To use the action, add a step to your workflow using the syntax provided below.
 
 Pass a value that includes the YAML file path and filename, assign the full path string to the variable, ensuring it correctly points to the location of the YAML file
 
+- `keys`
+
+(Optional - default all) Pass key name to be set as Github Outpus and Github environment variable. Use `,` in case of multiple keys.
+
 - `key-transformation`
 
 (Optional - default none) By default, the step creates each environment variable name and GitHub Output exactly as specified. you can configure the step to use lowercase letters with `lowercase` or to use uppercase letters with `uppercase`.
@@ -148,6 +152,42 @@ Environment variables created:
 region=us-east-1
 service_name=Ec2
 Instance_type=t2.medium
+```
+**Example 4**  
+The following example sets GitHub outputs and GitHub Environment variables for the keys provided as user input.
+
+config.yaml 
+```
+region: us-east-1
+service_name: Ec2
+Instance_type: 
+  Instance_type_1: t2.medium
+  Instance_type_2: t2.large
+```
+
+```
+- name: Read key-value pairs from YAML file 
+  uses: MangalAnkur/DevOpsPlanet-read-yaml-file@v1
+  with:
+    secret-ids: |
+      yaml-file: ./file_path/config.yaml
+      key-transformation: uppercase
+      set-env-vars: true
+      keys: service_name,Instance_type_2
+```
+
+GitHub output variables created:  
+
+```
+SERVICE_NAME=Ec2
+INSTANCE_TYPE_2=t2.large
+```
+
+GitHub Environmant variables created:  
+
+```
+SERVICE_NAME=Ec2
+INSTANCE_TYPE_2=t2.large
 ```
 
 ## License

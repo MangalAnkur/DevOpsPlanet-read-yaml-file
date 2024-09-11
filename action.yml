@@ -6,6 +6,11 @@ inputs:
     description: 'Absolute path of the YAML file with filename'
     required: true
 
+  keys:
+    description: key name to be set in case of multiple use ","
+    required: false
+    default: 'all'
+
   key-transformation:
     description: 'Option to apply key formatting: uppercase, lowercase, or none'
     required: false
@@ -19,5 +24,7 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - run: ./code-files/script.sh  ${{ inputs.yaml-file-path }} ${{ inputs.key-transformation }} ${{ inputs.set-env-vars }}
+    - run: |
+        chmod +x ./code-files/script.sh
+        ./code-files/script.sh  ${{ inputs.yaml-file-path }} ${{ inputs.key-transformation }} ${{ inputs.set-env-vars }} ${{ inputs.keys }}
       shell: bash
