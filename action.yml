@@ -1,6 +1,6 @@
-name: 'Read Yaml File'
+name: 'YAML File Reader'
 author: 'Ankur Mangal'
-description: 'script that reads values from a YAML file and sets them as environment variables'
+description: 'Script that reads values from a YAML file and sets them as GitHub Environment variables and GitHub outputs'
 branding:
   icon: code
   color: purple
