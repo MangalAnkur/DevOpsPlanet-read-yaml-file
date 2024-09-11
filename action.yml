@@ -29,5 +29,5 @@ runs:
   steps:
     - run: |
         chmod +x ./code-files/script.sh
-        ./code-files/script.sh  ${{ inputs.yaml-file-path }} ${{ inputs.key-transformation }} ${{ inputs.set-env-vars }} ${{ inputs.keys }}
+        ./code-files/script.sh  ${{ inputs.yaml-file }} ${{ inputs.key-transformation }} ${{ inputs.set-env-vars }} ${{ inputs.keys }}
       shell: bash
