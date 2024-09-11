@@ -60,12 +60,14 @@ Instance_type: t2.medium
     key-transformation: uppercase
 ```
 
-GitHub output variables created:  
+GitHub output variable created in Json Format:  
 
 ```
-REGION=us-east-1
-SERVICE_NAME=Ec2
-INSTANCE_TYPE=t2.medium
+{
+  REGION:us-east-1
+  SERVICE_NAME:Ec2
+  INSTANCE_TYPE:t2.medium
+}
 ```
 
 GitHub Environment variables created:  
@@ -98,13 +100,15 @@ Instance_type:
       set-env-vars: false
 ```
 
-GitHub output variables created:  
+GitHub output variable created in Json Format:  
 
 ```
-region=us-east-1
-service_name=Ec2
-instance_type_1=t2.medium
-instance_type_2=t2.large
+{
+  region:us-east-1
+  service_name:Ec2
+  instance_type_1:t2.medium
+  instance_type_2:t2.large
+}
 ```
 
 **Example 3:**  
@@ -126,25 +130,27 @@ Instance_type: t2.medium
 
 - name: Use values
   run: |
-    echo "region is ${{ steps.read-yaml-file.outputs.region }}"
-    echo "service_name is ${{ steps.read-yaml-file.outputs.service_name }}"
-    echo "Instance_type is ${{ steps.read-yaml-file.outputs.Instance_type }}"
+    echo "key value data is ${{ steps.read-yaml-file.outputs.data }}"
 ```
 
 Output:
 
 ```
-region is us-east-1
-service_name is Ec2
-Instance_type is t2.medium
+key value data is "{
+  region:us-east-1
+  service_name:Ec2
+  Instance_type:t2.medium
+}"
 ```
 
-GitHub output variables created:  
+GitHub output variable created:  
 
 ```
-region=us-east-1
-service_name=Ec2
-Instance_type=t2.medium
+{
+  region:us-east-1
+  service_name:Ec2
+  Instance_type:t2.medium
+}
 ```
 
 GitHub Environment variables created:  
@@ -177,11 +183,13 @@ Instance_type:
       keys: service_name,Instance_type_2
 ```
 
-GitHub output variables created:  
+GitHub output variables created in json format:  
 
 ```
-SERVICE_NAME=Ec2
-INSTANCE_TYPE_2=t2.large
+{
+  SERVICE_NAME:Ec2
+  INSTANCE_TYPE_2:t2.large
+}
 ```
 
 GitHub Environmant variables created:  

@@ -25,7 +25,7 @@ inputs:
     default: true
 
 outputs:
-  json_data:
+  data:
     description: 'Key values data Read form YAML file'
     value: ${{ toJson(steps.read_yaml_file.outputs) }}
 
