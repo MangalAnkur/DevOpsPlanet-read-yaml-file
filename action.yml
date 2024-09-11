@@ -27,7 +27,7 @@ inputs:
 outputs:
   Instance_type_1:
     description: 'Key values data Read form YAML file'
-  Instance_type_1:
+  Instance_type_2:
     description: 'Key values data Read form YAML file'
 
 runs:
