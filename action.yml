@@ -24,10 +24,9 @@ inputs:
     required: false
     default: true
 
-# outputs:
-#   data:
-#     description: 'Key values data Read form YAML file'
-#     value: ${{ steps.read_yaml_file.outputs.var }}
+outputs:
+  key_value_data:
+    description: 'Key values data Read form YAML file'
 
 runs:
   using: "composite"
