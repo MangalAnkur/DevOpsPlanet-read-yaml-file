@@ -1,6 +1,6 @@
-# Use key-values from yaml file in GitHub Environment variables and GitHub Output
+# Configure key-values from yaml file in GitHub Environment variables and GitHub Output
 
-To use key values from a YAML file in a GitHub job, you can use a GitHub Action to read the YAML file and set these key-value pairs [environment variables](https://docs.github.com/en/actions/learn-github-actions/environment-variables) and [GitHub outputs](https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/passing-information-between-jobs) in your GitHub workflow. For more information about GitHub Actions, see [Understanding GitHub Actions](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions) in the *GitHub Docs*.
+To configure key values from a YAML file in a GitHub job, you can use a GitHub Action to read the YAML file and set these key-value pairs [environment variables](https://docs.github.com/en/actions/learn-github-actions/environment-variables) and [GitHub outputs](https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/passing-information-between-jobs) in your GitHub workflow. For more information about GitHub Actions, see [Understanding GitHub Actions](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions) in the *GitHub Docs*.
 
 
 When you set environment variable to your GitHub environment, it is available to all other steps in your GitHub job.To learn how to use the environment variables, refer to the [Environment variables](https://docs.github.com/en/actions/learn-github-actions/environment-variables) section in the *GitHub Docs*.
@@ -19,6 +19,7 @@ To use the action, add a step to your workflow using the syntax provided below.
     yaml-file: (Required)  | Absolute path of the YAML file with filename
     key-transformation: (Optional) uppercase|lowercase|none default: none
     set-env-vars: (Optional) true|false default: true
+    keys: (Optional) default: all | key1,key2,key3,...
 ```
 
 ### Parameters
@@ -29,7 +30,7 @@ Pass a value that includes the YAML file path and filename, assign the full path
 
 - `keys`
 
-(Optional - default all) Pass key name to be set as Github Outpus and Github environment variable. Use `,` in case of multiple keys.
+(Optional - default all) Pass key name to be set as Github outpus and Github environment variable. Use `,` in case of multiple keys.
 
 - `key-transformation`
 
