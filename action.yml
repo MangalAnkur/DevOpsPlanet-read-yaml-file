@@ -27,11 +27,13 @@ inputs:
 output:
   data:
     description: 'Key values data Read form YAML file'
+    values: {{steps.read_yaml_file.outputs.var}}
 
 runs:
   using: "composite"
   steps:
-    - run: |
+    - id: read_yaml_file
+      run: |
         chmod +x ./code-files/script.sh
         data=$(./code-files/script.sh  ${{ inputs.yaml-file }} ${{ inputs.key-transformation }} ${{ inputs.set-env-vars }} ${{ inputs.keys }})
         for var in $data; do
