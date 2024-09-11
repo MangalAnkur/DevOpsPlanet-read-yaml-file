@@ -10,7 +10,7 @@ To view the environment variables created from your YAML file, enable debug logg
 
 ### Usage
 
-To use the action, include a step in your workflow with the following syntax.
+To use the action, include a step in your workflow with the following syntax
 
 ```
 - name: Step name
