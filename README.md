@@ -30,7 +30,7 @@ Pass a value that includes the YAML file path and filename, assign the full path
 
 - `keys`
 
-(Optional - default all) Pass key name to be set as Github outpus and Github environment variable. Use `,` in case of multiple keys.
+(Optional - default all) Pass key name to be set as Github outputs and Github environment variable. Use `,` in case of multiple keys.
 
 - `key-transformation`
 
