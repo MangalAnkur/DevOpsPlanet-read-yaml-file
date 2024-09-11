@@ -27,7 +27,7 @@ inputs:
 outputs:
   Instance_type_1:
     description: 'Key values data Read form YAML file'
-    value: ${{ toJson(steps.read_yaml_file.outputs) }}
+    value: ${{ steps.read_yaml_file.outputs }}
 
 runs:
   using: "composite"
