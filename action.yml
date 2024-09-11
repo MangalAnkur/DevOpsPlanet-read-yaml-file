@@ -1,0 +1,23 @@
+name: 'Read Yaml File'
+author: 'Ankur Mangal'
+description: 'script that reads values from a YAML file and sets them as environment variables'
+inputs:
+  yaml-file:
+    description: 'Absolute path of the YAML file with filename'
+    required: true
+
+  key-transformation:
+    description: 'Option to apply key formatting: uppercase, lowercase, or none'
+    required: false
+    default: 'none'
+    
+  set-env-vars:
+    description: 'Assign key-value pairs to GitHub environment variables'
+    required: false
+    default: true
+
+runs:
+  using: "composite"
+  steps:
+    - run: ./code-files/script.sh  ${{ inputs.yaml-file-path }} ${{ inputs.key-transformation }} ${{ inputs.set-env-vars }}
+      shell: bash
