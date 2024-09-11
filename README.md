@@ -126,7 +126,7 @@ Instance_type: t2.medium
     echo "Instance_type is ${{ steps.read-yaml-file.outputs.Instance_type }}"
 ```
 
-output
+output:
 
 ```
 region is us-east-1
