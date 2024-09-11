@@ -40,6 +40,14 @@ Pass a value that includes the YAML file path and filename, assign the full path
 
 (Optional - default true) By default, the action configures key-value pairs as environment variables within a GitHub Actions workflow. If you do not want to set these environment variables, you can modify the configuration by passing the value `false`. This will prevent the action from creating environment variables.
 
+### Output
+
+- `data` 
+
+The output variable reads from `$GITHUB_OUTPUT` in JSON format.
+
+uses: `${{ steps.id.outputs.data}} `
+
 ### Examples
 
 **Example 1:**  
@@ -183,7 +191,7 @@ Instance_type:
       keys: service_name,Instance_type_2
 ```
 
-GitHub output variables created in json format:  
+GitHub output variables created in Json format:  
 
 ```
 {
