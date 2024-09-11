@@ -29,7 +29,7 @@ Pass a value that includes the YAML file path and filename, assign the full path
 
 - `key-transformation`
 
-(Optional - default none) By default, the step creates each environment variable name and GitHub Output exactly as specified. you can configure the step to use lowercase letters with `lowercase` or to use uppercase letters with `uppercase`. The default value is `none`.
+(Optional - default none) By default, the step creates each environment variable name and GitHub Output exactly as specified. you can configure the step to use lowercase letters with `lowercase` or to use uppercase letters with `uppercase`.
 
 - `set-env-vars`
 
@@ -37,7 +37,7 @@ Pass a value that includes the YAML file path and filename, assign the full path
 
 ### Examples
 
-**Example 1 **  
+**Example 1**  
 The following example creates GitHub environment variables and sets GitHub outputs for the key-value pairs defined in a YAML file.
 
 config.yaml 
@@ -69,10 +69,41 @@ Environment variables created:
 REGION=us-east-1
 SERVICE_NAME=Ec2
 INSTANCE_TYPE=t2.medium
+```
+
+**Example 2**  
+The following example sets GitHub outputs for the key-value pairs defined in a YAML file.
+
+config.yaml 
+```
+region: us-east-1
+service_name: Ec2
+Instance_type: 
+  Instance_type_1: t2.medium
+  Instance_type_2: t2.large
+```
 
 ```
-**Example 2 **  
-The following example demonstrates how to read GitHub output variables defined by the key-value pairs in a YAML file.
+- name: Read key-value pairs from YAML file 
+  uses: MangalAnkur/DevOpsPlanet-read-yaml-file@v1
+  with:
+    secret-ids: |
+      yaml-file: ./file_path/config.yaml
+      key-transformation: lowercase
+      set-env-vars: false
+```
+
+GitHub output variables created:  
+
+```
+region=us-east-1
+service_name=Ec2
+instance_type_1=t2.medium
+instance_type_2=t2.large
+```
+
+**Example 3**  
+The following example demonstrates how to set and read GitHub outputs for the key-value pairs defined in a YAML file
 
 config.yaml 
 ```
@@ -117,37 +148,6 @@ Environment variables created:
 region=us-east-1
 service_name=Ec2
 Instance_type=t2.medium
-```
-
-**Example 3 **  
-The following example sets GitHub outputs for the key-value pairs defined in a YAML file.
-
-config.yaml 
-```
-region: us-east-1
-service_name: Ec2
-Instance_type: 
-  Instance_type_1: t2.medium
-  Instance_type_2: t2.large
-```
-
-```
-- name: Read key-value pairs from YAML file 
-  uses: MangalAnkur/DevOpsPlanet-read-yaml-file@v1
-  with:
-    secret-ids: |
-      yaml-file: ./file_path/config.yaml
-      key-transformation: lowercase
-      set-env-vars: false
-```
-
-GitHub output variables created:  
-
-```
-region=us-east-1
-service_name=Ec2
-instance_type_1=t2.medium
-instance_type_2=t2.large
 ```
 
 ## License
