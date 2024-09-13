@@ -68,13 +68,13 @@ Instance_type: t2.medium
     key-transformation: uppercase
 ```
 
-GitHub output variable created in Json Format:  
+GitHub output variable created in JSON Format:  
 
 ```
 {
-  REGION:us-east-1
-  SERVICE_NAME:Ec2
-  INSTANCE_TYPE:t2.medium
+  "REGION": "us-east-1",
+  "SERVICE_NAME": "Ec2",
+  "INSTANCE_TYPE": "t2.medium",
 }
 ```
 
@@ -108,14 +108,14 @@ Instance_type:
       set-env-vars: false
 ```
 
-GitHub output variable created in Json Format:  
+GitHub output variable created in JSON Format:  
 
 ```
 {
-  region:us-east-1
-  service_name:Ec2
-  instance_type_1:t2.medium
-  instance_type_2:t2.large
+  "region": "us-east-1",
+  "service_name": "Ec2",
+  "instance_type_1": "t2.medium",
+  "instance_type_2": "t2.large"
 }
 ```
 
@@ -135,38 +135,45 @@ Instance_type: t2.medium
   id: read-yaml-file
   with:
     yaml-file: file_path/config.yaml
+    key-transformation: uppercase
 
 - name: Use values
   run: |
-    echo "key value data is ${{ steps.read-yaml-file.outputs.data }}"
+    echo key value data is '${{ steps.read-yaml-file.outputs.data }}'
+    key_value_data='${{ steps.read-yaml-file.outputs.data }}'
+    region=$(echo "$key_value_data" | jq -r '.REGION')
+    service_name=$(echo "$key_value_data" | jq -r '.SERVICE_NAME')
+    echo region is $region and service name is $service_name
+
 ```
 
 Output:
 
 ```
-key value data is "{
-  region:us-east-1
-  service_name:Ec2
-  Instance_type:t2.medium
-}"
+key value data is {
+  "REGION": "us-east-1",
+  "SERVICE_NAME": "Ec2",
+  "INSTANCE_TYPE": "t2.medium",
+}
+region is us-east-1 and service name is Ec2
 ```
 
-GitHub output variable created:  
+GitHub output variable created in JSON format:  
 
 ```
 {
-  region:us-east-1
-  service_name:Ec2
-  Instance_type:t2.medium
+  "REGION": "us-east-1",
+  "SERVICE_NAME": "Ec2",
+  "INSTANCE_TYPE": "t2.medium",
 }
 ```
 
 GitHub Environment variables created:  
 
 ```
-region=us-east-1
-service_name=Ec2
-Instance_type=t2.medium
+REGION=us-east-1
+SERVICE_NAME=Ec2
+INSTANCE_TYPE=t2.medium
 ```
 
 **Example 4:**  
@@ -191,12 +198,12 @@ Instance_type:
       keys: service_name,Instance_type_2
 ```
 
-GitHub output variables created in Json format:  
+GitHub output variable created in JSON format:  
 
 ```
 {
-  SERVICE_NAME:Ec2
-  INSTANCE_TYPE_2:t2.large
+  "SERVICE_NAME": "Ec2",
+  "INSTANCE_TYPE_2": "t2.large"
 }
 ```
 
