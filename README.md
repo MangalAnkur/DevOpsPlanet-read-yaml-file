@@ -141,8 +141,8 @@ Instance_type: t2.medium
   run: |
     echo key value data is '${{ steps.read-yaml-file.outputs.data }}'
     key_value_data='${{ steps.read-yaml-file.outputs.data }}'
-    region=$(echo "$key_value_data" | jq -r '.REGION')
-    service_name=$(echo "$key_value_data" | jq -r '.SERVICE_NAME')
+    region=$(echo "$key_value_data" | jq -r '.["REGION"]')
+    service_name=$(echo "$key_value_data" |jq -r '.["SERVICE_NAME"]')
     echo region is $region and service name is $service_name
 
 ```
